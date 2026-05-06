@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gallery - Nichtech</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span class="menu-icon" onclick="toggleMenu()">☰</span>
+  <h2>Nichtech</h2>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="courses.html">Courses</a>
+  <a href="apply.html">Apply</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+  <a href="portal.html">Student Portal</a>
+</div>
+
+<!-- CONTENT -->
+<section class="card">
+
+  <h2>Our Gallery</h2>
+  <p class="subtitle">Moments from our campus and student life</p>
+
+  <div class="gallery">
+    <img src="images/image1.jpg">
+    <img src="images/image2.jpg">
+    <img src="images/image3.jpg">
+    <img src="images/image4.jpg">
+    <img src="images/image5.jpg">
+    <img src="images/image6.jpg">
+    <img src="images/image7.jpg">
+    <img src="images/image8.jpeg">
+    <img src="images/image9.jpg">
+    <img src="images/image10.jpg">
+  </div>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+  <img id="lightbox-img">
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Nichtech Technologies Training College</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+  menu.classList.toggle("show");
+}
+
+// Lightbox
+document.addEventListener("DOMContentLoaded", function () {
+
+  const images = document.querySelectorAll(".gallery img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  images.forEach(function(img) {
+    img.addEventListener("click", function () {
+      lightbox.style.display = "flex";
+      lightboxImg.src = this.src;
+    });
+  });
+
+  lightbox.addEventListener("click", function () {
+    lightbox.style.display = "none";
+  });
+
+});
+</script>
+
+</body>
+</html>

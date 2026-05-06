@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Portal - Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <h2>Nichtech</h2>
+</header>
+
+<!-- MENU -->
+<nav id="menu" class="menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="courses.html">Courses</a>
+  <a href="apply.html">Apply</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+  <a href="portal.html">Student Portal</a>
+</nav>
+
+<!-- LOGIN CARD -->
+<section class="card login-card">
+
+  <h2>🎓 Student Portal</h2>
+  <p class="subtitle">Login to access your dashboard</p>
+
+  <input type="text" id="studentNo" placeholder="Student Number">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="loginStudent()" class="primary-btn">Login</button>
+
+  <p id="message" class="error"></p>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Nichtech Technologies Training College</p>
+</footer>
+
+<!-- MENU SCRIPT -->
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+  menu.classList.toggle("show");
+}
+
+// Auto close menu
+var links = document.querySelectorAll("#menu a");
+links.forEach(function(link) {
+  link.addEventListener("click", function() {
+    document.getElementById("menu").classList.remove("show");
+  });
+});
+</script>
+
+<!-- LOGIN SCRIPT (YOUR BACKEND CONNECTED) -->
+<script>
+
+function loginStudent() {
+
+  const studentNo = document.getElementById("studentNo").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  const message = document.getElementById("message");
+  message.innerText = "";
+
+  // Check empty
+  if (!studentNo || !password) {
+    message.innerText = "Please enter all fields";
+    return;
+  }
+
+  const url = "https://script.google.com/macros/s/AKfycbwZjRT8iJQmUkcu65rSTX3yPm_pi95ro_ImzEbe_s15oOP_ZzPxzh2yfQky631QDgTacg/exec?studentNo="
+              + encodeURIComponent(studentNo) +
+              "&password=" + encodeURIComponent(password);
+
+  message.style.color = "white";
+  message.innerText = "Logging in...";
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+
+      if (data.status === "success") {
+
+        localStorage.setItem("studentData", JSON.stringify(data));
+        window.location.href = "dashboard.html";
+
+      } else {
+        message.style.color = "red";
+        message.innerText = "Invalid Student Number or Password";
+      }
+
+    })
+    .catch(() => {
+      message.style.color = "red";
+      message.innerText = "Network error. Check connection.";
+    });
+}
+
+</script>
+
+</body>
+</html>

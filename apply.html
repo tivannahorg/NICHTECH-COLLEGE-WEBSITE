@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apply - Nichtech</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span class="menu-icon" onclick="toggleMenu()">☰</span>
+  <h2>Nichtech</h2>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="courses.html">Courses</a>
+  <a href="apply.html">Apply</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+  <a href="portal.html">Student Portal</a>
+</div>
+
+<!-- CONTENT -->
+<section class="card">
+
+  <h2>Apply Now</h2>
+
+  <p class="subtitle">
+    Start your journey with Nichtech Technologies Training College.
+  </p>
+
+  <div class="apply-box">
+    <p>Click below to open the official application form.</p>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdCzkGY4Dlym9f-5tSGKKflJqQE6VQ1C5KcqnAKaPcOgpsZzQ/viewform" target="_blank" class="primary-btn">
+      Open Application Form
+    </a>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Nichtech Technologies Training College</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+  menu.classList.toggle("show");
+}
+
+var links = document.querySelectorAll("#menu a");
+links.forEach(function(link) {
+  link.addEventListener("click", function() {
+    document.getElementById("menu").classList.remove("show");
+  });
+});
+</script>
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+  menu.classList.toggle("show");
+}
+</script>
+</body>
+</html>

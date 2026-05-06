@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nichtech Technologies Training College</title>
+
+  <!-- GOOGLE FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+
+    <div class="menu-icon" onclick="toggleMenu()">
+      ☰
+    </div>
+
+    <h2>Nichtech</h2>
+
+  </header>
+
+  <!-- MOBILE MENU -->
+  <nav id="menu" class="menu">
+
+    <a href="index.html">Home</a>
+
+    <a href="about.html">About</a>
+
+    <a href="courses.html">Courses</a>
+
+    <a href="apply.html">Apply</a>
+
+    <a href="gallery.html">Gallery</a>
+
+    <a href="contact.html">Contact</a>
+
+    <a href="portal.html">Student Portal</a>
+
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <img src="images/logo.png" class="logo">
+
+      <h1>
+        Nichtech Technologies Training College
+      </h1>
+
+      <p>
+        Empowering Skills. Shaping Futures.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="apply.html" class="primary-btn">
+          Apply Now
+        </a>
+
+        <a href="courses.html" class="secondary-btn">
+          Explore Courses
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+
+    <div class="stat-card">
+      <h2>527+</h2>
+      <p>Graduated Students</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>150+</h2>
+      <p>Active Students</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>8+</h2>
+      <p>Professional Courses</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>2</h2>
+      <p>Graduation Ceremonies</p>
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-home">
+
+    <span class="section-tag">
+      TEVETA ACCREDITED
+    </span>
+
+    <h2>
+      Welcome to Nichtech
+    </h2>
+
+    <p>
+      Nichtech Technologies Training College is committed to providing practical and professional education that empowers students with modern skills for employment, entrepreneurship, and innovation.
+    </p>
+
+  </section>
+
+  <!-- COURSES -->
+  <section class="courses-preview">
+
+    <div class="course-preview-card">
+
+      <div class="course-icon">
+        💻
+      </div>
+
+      <h3>ICT</h3>
+
+      <p>
+        Learn computer applications, networking, internet skills and digital technologies.
+      </p>
+
+    </div>
+
+    <div class="course-preview-card">
+
+      <div class="course-icon">
+        📘
+      </div>
+
+      <h3>Business Studies</h3>
+
+      <p>
+        Professional business, entrepreneurship and office administration training.
+      </p>
+
+    </div>
+
+    <div class="course-preview-card">
+
+      <div class="course-icon">
+        ✂️
+      </div>
+
+      <h3>Tailoring & Fashion</h3>
+
+      <p>
+        Gain practical tailoring and fashion design skills for self-employment.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section class="cta-section">
+
+    <h2>
+      Start Your Journey Today
+    </h2>
+
+    <p>
+      Join hundreds of successful students building brighter futures through quality education.
+    </p>
+
+    <a href="apply.html" class="primary-btn">
+      Enroll Now
+    </a>
+
+  </section>
+
+  <!-- FACEBOOK -->
+  <section class="facebook-section">
+
+    <h2>
+      Follow Us On Facebook
+    </h2>
+
+    <p>
+      Stay updated with college news, graduations, student activities and announcements.
+    </p>
+
+    <a href="https://www.facebook.com/profile.php?id=100064604655766"
+      target="_blank"
+      class="facebook-btn">
+
+      Visit Facebook Page
+
+    </a>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-content">
+
+      <h3>Nichtech Technologies Training College</h3>
+
+      <p>
+        A TEVETA Accredited Training Institution in Choma.
+      </p>
+
+      <div class="footer-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="about.html">About</a>
+
+        <a href="courses.html">Courses</a>
+
+        <a href="contact.html">Contact</a>
+
+      </div>
+
+      <p class="copyright">
+        © 2026 Nichtech Technologies Training College
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/260971453747"
+    class="whatsapp-btn"
+    target="_blank">
+
+    💬
+
+  </a>
+
+  <!-- SCRIPT -->
+  <script>
+
+    function toggleMenu() {
+
+      var menu = document.getElementById("menu");
+
+      menu.classList.toggle("show");
+
+    }
+
+    // AUTO CLOSE MENU
+
+    var links = document.querySelectorAll("#menu a");
+
+    links.forEach(function (link) {
+
+      link.addEventListener("click", function () {
+
+        document.getElementById("menu").classList.remove("show");
+
+      });
+
+    });
+
+  </script>
+
+</body>
+
+</html>

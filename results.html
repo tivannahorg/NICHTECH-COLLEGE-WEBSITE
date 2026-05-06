@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Results</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 15px;
+      background: #f4f4f4;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    h3 {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    hr {
+      margin: 15px 0;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 14px;
+      width: 100%;
+      background: orange;
+      border: none;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:active {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <h2>NICHTECH TECHNOLOGIES TRAINING COLLEGE</h2>
+  <h3>Student Result Slip</h3>
+
+  <div id="content"></div>
+
+  <!-- ✅ CLEAN BUTTON -->
+  <button class="btn" onclick="printResults()">Download / Save PDF</button>
+
+</div>
+
+<script>
+
+// LOAD DATA
+const data = JSON.parse(localStorage.getItem("printData"));
+
+if (!data) {
+  document.getElementById("content").innerHTML = "<p>No data found</p>";
+} else {
+
+  document.getElementById("content").innerHTML = `
+    <p><strong>Name:</strong> ${data.name || ""}</p>
+    <p><strong>Student ID:</strong> ${data.studentId || ""}</p>
+    <p><strong>Program:</strong> ${data.program || ""}</p>
+    <p><strong>Intake:</strong> ${data.intake || ""}</p>
+    <p><strong>Year:</strong> ${data.year || ""}</p>
+    <p><strong>Duration:</strong> ${data.duration || ""}</p>
+    <p><strong>Sponsor:</strong> ${data.sponsor || ""}</p>
+    <p><strong>Balance:</strong> ${data.balance || ""}</p>
+
+    <hr>
+
+    <p><strong>Results:</strong> ${data.results || "Results not available"}</p>
+  `;
+}
+
+
+// ✅ SIMPLE + RELIABLE
+function printResults() {
+  window.print();
+}
+
+</script>
+
+</body>
+</html>
