@@ -1,179 +1,72 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
-<title>Attachment Registration - NICHTECH</title>
+<title>Attachment Registration</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-
 body{
-
-background:#f2f5f9;
-padding:20px;
-
+    font-family:Arial,sans-serif;
+    background:#f2f5f9;
+    padding:20px;
 }
-
 
 .container{
-
-max-width:600px;
-margin:auto;
-
-background:white;
-border-radius:15px;
-overflow:hidden;
-box-shadow:0 4px 15px rgba(0,0,0,0.1);
-
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    max-width:500px;
+    margin:auto;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
 }
 
-
-
-.header{
-
-background:#0b5e2b;
-color:white;
-text-align:center;
-padding:25px;
-
+h2{
+    text-align:center;
+    color:#0b5e2b;
 }
-
-
-.header img{
-
-width:80px;
-height:80px;
-border-radius:50%;
-background:white;
-padding:5px;
-
-}
-
-
-.header h2{
-
-margin-top:15px;
-font-size:22px;
-
-}
-
-
-
-.form-area{
-
-padding:25px;
-
-}
-
-
-.student-info{
-
-background:#f1f8f3;
-padding:15px;
-border-left:5px solid #0b5e2b;
-border-radius:8px;
-margin-bottom:20px;
-
-}
-
-
-.student-info p{
-
-font-size:16px;
-margin:5px;
-
-}
-
-
-
-label{
-
-font-weight:bold;
-color:#0b5e2b;
-
-}
-
-
 
 input, textarea{
 
-width:100%;
-padding:14px;
-margin:8px 0 15px;
-border:1px solid #ccc;
-border-radius:8px;
-font-size:16px;
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
 
 }
-
-
-
-textarea{
-
-height:100px;
-resize:none;
-
-}
-
-
 
 button{
 
-width:100%;
-padding:15px;
-background:#0b5e2b;
-color:white;
-border:none;
-border-radius:10px;
-font-size:18px;
-cursor:pointer;
+    width:100%;
+    background:#0b5e2b;
+    color:white;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
 
 }
-
 
 button:hover{
 
-background:#08451f;
+    background:#08451f;
 
 }
-
-
-
-.back{
-
-display:block;
-text-align:center;
-margin-top:20px;
-text-decoration:none;
-color:#0b5e2b;
-font-weight:bold;
-
-}
-
-
 
 #message{
 
-text-align:center;
-margin-top:15px;
-font-weight:bold;
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
 
 }
 
-
-
 </style>
-
 
 </head>
 
@@ -184,212 +77,138 @@ font-weight:bold;
 <div class="container">
 
 
-<div class="header">
-
-<img src="logo.png">
-
-<h2>
-NICHTECH TECHNOLOGIES<br>
-TRAINING COLLEGE
-</h2>
-
-<p>
-Industrial Attachment Registration
-</p>
-
-</div>
+<h2>Attachment Registration</h2>
 
 
+<input type="text" id="company" placeholder="Institution Name">
 
 
-<div class="form-area">
+<input type="text" id="supervisor" placeholder="Supervisor Name">
 
 
-
-<div class="student-info">
-
-<p><b>Student Name:</b> 
-<span id="studentName"></span>
-</p>
+<input type="text" id="phone" placeholder="Supervisor Phone">
 
 
-<p><b>Student Number:</b> 
-<span id="studentNumber"></span>
-</p>
+<label>Start Date</label>
+
+<input type="date" id="startDate">
 
 
-</div>
+<label>End Date</label>
+
+<input type="date" id="endDate">
 
 
-
-
-
-<label>Institution / Company Name</label>
-
-<input 
-type="text" 
-id="company"
-placeholder="Enter institution name">
-
-
-
-
-
-<label>Supervisor Name</label>
-
-<input 
-type="text"
-id="supervisor"
-placeholder="Enter supervisor name">
-
-
-
-
-
-<label>Supervisor Phone Number</label>
-
-<input 
-type="text"
-id="phone"
-placeholder="Enter phone number">
-
-
-
-
-
-<label>Attachment Start Date</label>
-
-<input 
-type="date"
-id="startDate">
-
-
-
-
-
-<label>Attachment End Date</label>
-
-<input 
-type="date"
-id="endDate">
-
-
-
-
-
-<label>Institution Address</label>
-
-<textarea
-id="address"
-placeholder="Enter institution address">
-</textarea>
-
-
-
+<textarea id="address" placeholder="Institution Address"></textarea>
 
 
 <button onclick="submitAttachment()">
-
-Submit Attachment Registration
-
+Submit Attachment
 </button>
 
 
 <p id="message"></p>
 
 
-
-<a href="dashboard.html" class="back">
-← Back to Dashboard
-</a>
-
-
-
 </div>
-
-
-</div>
-
-
 
 
 
 <script>
 
 
-// CHECK LOGIN
+function submitAttachment(){
 
-const student = JSON.parse(localStorage.getItem("studentData"));
+
+const student =
+JSON.parse(localStorage.getItem("studentData"));
 
 
 
 if(!student){
 
-window.location.href="portal.html";
+alert("Please login first");
+
+return;
+
+}
+
+
+
+const data = {
+
+
+studentNumber: student.studentNo,
+
+studentName: student.name,
+
+
+company:
+document.getElementById("company").value,
+
+
+supervisor:
+document.getElementById("supervisor").value,
+
+
+phone:
+document.getElementById("phone").value,
+
+
+startDate:
+document.getElementById("startDate").value,
+
+
+endDate:
+document.getElementById("endDate").value,
+
+
+address:
+document.getElementById("address").value
+
+
+};
+
+
+
+document.getElementById("message").innerHTML =
+"Submitting...";
+
+
+
+fetch(
+"https://script.google.com/macros/s/AKfycbzvOuZXwfxgpVi5QE8g13VPDkIAwU19J749ZydyIntYgVp0vpKc0dkyioc8jpA1mJQVEw/exec",
+{
+
+method:"POST",
+
+body:JSON.stringify(data)
+
+}
+
+)
+
+.then(response=>response.json())
+
+.then(result=>{
+
+
+if(result.status=="success"){
+
+
+document.getElementById("message").innerHTML =
+"Attachment submitted successfully!";
+
 
 }
 
 else{
 
 
-document.getElementById("studentName").innerText =
-student.name || "Not Available";
-
-
-document.getElementById("studentNumber").innerText =
-student.studentId || "Not Available";
-
+document.getElementById("message").innerHTML =
+"Submission failed";
 
 }
-
-
-
-
-
-
-function submitAttachment(){
-
-
-const attachment = {
-
-studentName: student.name,
-
-studentNumber: student.studentId,
-
-company: document.getElementById("company").value,
-
-supervisor: document.getElementById("supervisor").value,
-
-phone: document.getElementById("phone").value,
-
-startDate: document.getElementById("startDate").value,
-
-endDate: document.getElementById("endDate").value,
-
-address: document.getElementById("address").value
-
-};
-
-
-
-fetch(
-    "https://script.google.com/macros/s/AKfycbzvOuZXwfxgpVi5QE8g13VPDkIAwU19J749ZydyIntYgVp0vpKc0dkyioc8jpA1mJQVEw/exec",
-    {
-        method: "POST",
-        body: JSON.stringify(data)
-    }
-)
-
-.then(response => response.text())
-
-.then(result => {
-
-
-document.getElementById("message").innerHTML =
-"✅ Attachment submitted successfully!";
-
-
-console.log(result);
 
 
 })
@@ -398,39 +217,13 @@ console.log(result);
 .catch(error=>{
 
 
-document.getElementById("message").innerHTML =
-"❌ Submission failed";
-
-
 console.log(error);
+
+document.getElementById("message").innerHTML =
+"Network error";
 
 
 });
-
-
-}
-
-
-
-
-
-// SAVE TEMPORARILY
-
-localStorage.setItem(
-"attachmentData",
-JSON.stringify(attachment)
-);
-
-
-
-
-document.getElementById("message").innerHTML =
-"Attachment details submitted successfully!";
-
-
-
-console.log(attachment);
-
 
 
 }
@@ -441,6 +234,4 @@ console.log(attachment);
 
 
 </body>
-
-
 </html>
