@@ -13,8 +13,10 @@
   <h2>Nichtech</h2>
 </header>
 
+
 <!-- MENU -->
 <nav id="menu" class="menu">
+
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="courses.html">Courses</a>
@@ -22,90 +24,223 @@
   <a href="gallery.html">Gallery</a>
   <a href="contact.html">Contact</a>
   <a href="portal.html">Student Portal</a>
+
 </nav>
 
+
+
 <!-- LOGIN CARD -->
+
 <section class="card login-card">
 
   <h2>🎓 Student Portal</h2>
-  <p class="subtitle">Login to access your dashboard</p>
 
-  <input type="text" id="studentNo" placeholder="Student Number">
-  <input type="password" id="password" placeholder="Password">
+  <p class="subtitle">
+    Login to access your dashboard
+  </p>
 
-  <button onclick="loginStudent()" class="primary-btn">Login</button>
+
+  <input 
+  type="text" 
+  id="studentNo" 
+  placeholder="Student Number">
+
+
+  <input 
+  type="password" 
+  id="password" 
+  placeholder="Password">
+
+
+  <button 
+  onclick="loginStudent()" 
+  class="primary-btn">
+
+  Login
+
+  </button>
+
 
   <p id="message" class="error"></p>
 
+
 </section>
 
+
+
 <!-- FOOTER -->
+
 <footer>
-  <p>© 2026 Nichtech Technologies Training College</p>
+
+<p>
+© 2026 Nichtech Technologies Training College
+</p>
+
 </footer>
 
+
+
+
 <!-- MENU SCRIPT -->
+
 <script>
+
 function toggleMenu() {
+
   var menu = document.getElementById("menu");
+
   menu.classList.toggle("show");
+
 }
 
-// Auto close menu
+
+
 var links = document.querySelectorAll("#menu a");
-links.forEach(function(link) {
-  link.addEventListener("click", function() {
-    document.getElementById("menu").classList.remove("show");
+
+
+links.forEach(function(link){
+
+  link.addEventListener("click",function(){
+
+    document.getElementById("menu")
+    .classList.remove("show");
+
   });
+
 });
+
+
 </script>
 
-<!-- LOGIN SCRIPT (YOUR BACKEND CONNECTED) -->
+
+
+
+<!-- LOGIN SCRIPT -->
+
 <script>
 
-function loginStudent() {
 
-  const studentNo = document.getElementById("studentNo").value.trim();
-  const password = document.getElementById("password").value.trim();
+function loginStudent(){
 
-  const message = document.getElementById("message");
-  message.innerText = "";
 
-  // Check empty
-  if (!studentNo || !password) {
-    message.innerText = "Please enter all fields";
-    return;
-  }
+const studentNo =
+document.getElementById("studentNo").value.trim();
 
-  const url = "https://script.google.com/macros/s/AKfycbwZjRT8iJQmUkcu65rSTX3yPm_pi95ro_ImzEbe_s15oOP_ZzPxzh2yfQky631QDgTacg/exec?studentNo="
-              + encodeURIComponent(studentNo) +
-              "&password=" + encodeURIComponent(password);
 
-  message.style.color = "white";
-  message.innerText = "Logging in...";
+const password =
+document.getElementById("password").value.trim();
 
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
 
-      if (data.status === "success") {
 
-        localStorage.setItem("studentData", JSON.stringify(data));
-        window.location.href = "dashboard.html";
+const message =
+document.getElementById("message");
 
-      } else {
-        message.style.color = "red";
-        message.innerText = "Invalid Student Number or Password";
-      }
 
-    })
-    .catch(() => {
-      message.style.color = "red";
-      message.innerText = "Network error. Check connection.";
-    });
+message.innerText="";
+
+
+
+if(!studentNo || !password){
+
+
+message.innerText =
+"Please enter all fields";
+
+
+return;
+
+
 }
 
+
+
+
+// UPDATED GOOGLE APPS SCRIPT URL
+
+const url = 
+"https://script.google.com/macros/s/AKfycbwM5dwST8GJ-1CyWcqP_59FICBw_QPOaNeD_sLSUuZ_fqc8nrQJ_wKhyLH6KWepbuLjpA/exec?studentNo="
++
+encodeURIComponent(studentNo)
++
+"&password="
++
+encodeURIComponent(password);
+
+
+
+message.style.color="white";
+
+message.innerText="Logging in...";
+
+
+
+
+fetch(url)
+
+
+.then(res => res.json())
+
+
+.then(data => {
+
+
+
+if(data.status === "success"){
+
+
+
+localStorage.setItem(
+"studentData",
+JSON.stringify(data)
+);
+
+
+
+window.location.href =
+"dashboard.html";
+
+
+
+}
+
+else{
+
+
+message.style.color="red";
+
+message.innerText =
+"Invalid Student Number or Password";
+
+
+}
+
+
+
+})
+
+
+.catch(error => {
+
+
+console.log(error);
+
+
+message.style.color="red";
+
+
+message.innerText =
+"Network error. Check connection.";
+
+
+});
+
+
+
+}
+
+
 </script>
+
 
 </body>
 </html>
