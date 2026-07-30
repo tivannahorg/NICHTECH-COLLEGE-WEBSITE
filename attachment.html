@@ -350,43 +350,66 @@ student.studentId || "Not Available";
 function submitAttachment(){
 
 
-
 const attachment = {
 
+studentName: student.name,
 
-studentName:
-student.name,
+studentNumber: student.studentId,
 
+company: document.getElementById("company").value,
 
-studentNumber:
-student.studentId,
+supervisor: document.getElementById("supervisor").value,
 
+phone: document.getElementById("phone").value,
 
-company:
-document.getElementById("company").value,
+startDate: document.getElementById("startDate").value,
 
+endDate: document.getElementById("endDate").value,
 
-supervisor:
-document.getElementById("supervisor").value,
-
-
-phone:
-document.getElementById("phone").value,
-
-
-startDate:
-document.getElementById("startDate").value,
-
-
-endDate:
-document.getElementById("endDate").value,
-
-
-address:
-document.getElementById("address").value
-
+address: document.getElementById("address").value
 
 };
+
+
+
+fetch("https://script.google.com/macros/s/AKfycbwM5dwST8GJ-1CyWcqP_59FICBw_QPOaNeD_sLSUuZ_fqc8nrQJ_wKhyLH6KWepbuLjpA/exec",
+{
+
+method:"POST",
+
+body:JSON.stringify(attachment)
+
+})
+
+.then(response => response.text())
+
+.then(result => {
+
+
+document.getElementById("message").innerHTML =
+"✅ Attachment submitted successfully!";
+
+
+console.log(result);
+
+
+})
+
+
+.catch(error=>{
+
+
+document.getElementById("message").innerHTML =
+"❌ Submission failed";
+
+
+console.log(error);
+
+
+});
+
+
+}
 
 
 
