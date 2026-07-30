@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attachment Registration</title>
+</head>
+
+<body>
+
+<h2>Attachment Registration</h2>
+
+<input type="text" id="company" placeholder="Institution name">
+
+<input type="text" id="supervisor" placeholder="Supervisor name">
+
+<input type="text" id="phone" placeholder="Supervisor phone">
+
+<input type="date" id="startDate">
+
+<input type="date" id="endDate">
+
+<textarea id="address"
+placeholder="Institution address"></textarea>
+
+<br><br>
+
+<button onclick="submitAttachment()">
+Submit
+</button>
+
+<p id="message"></p>
+
+<script>
+
+function submitAttachment() {
+
+    const student =
+        JSON.parse(localStorage.getItem("studentData"));
+
+    const data = {
+        studentNo: student.studentNo,
+        company: document.getElementById("company").value,
+        supervisor: document.getElementById("supervisor").value,
+        phone: document.getElementById("phone").value,
+        startDate: document.getElementById("startDate").value,
+        endDate: document.getElementById("endDate").value,
+        address: document.getElementById("address").value
+    };
+
+    console.log(data);
+}
+
+</script>
+
+</body>
+</html>
