@@ -1,55 +1,424 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Attachment Registration</title>
+
+<title>Attachment Registration - NICHTECH</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+
+body{
+
+background:#f2f5f9;
+padding:20px;
+
+}
+
+
+.container{
+
+max-width:600px;
+margin:auto;
+
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+
+}
+
+
+
+.header{
+
+background:#0b5e2b;
+color:white;
+text-align:center;
+padding:25px;
+
+}
+
+
+.header img{
+
+width:80px;
+height:80px;
+border-radius:50%;
+background:white;
+padding:5px;
+
+}
+
+
+.header h2{
+
+margin-top:15px;
+font-size:22px;
+
+}
+
+
+
+.form-area{
+
+padding:25px;
+
+}
+
+
+.student-info{
+
+background:#f1f8f3;
+padding:15px;
+border-left:5px solid #0b5e2b;
+border-radius:8px;
+margin-bottom:20px;
+
+}
+
+
+.student-info p{
+
+font-size:16px;
+margin:5px;
+
+}
+
+
+
+label{
+
+font-weight:bold;
+color:#0b5e2b;
+
+}
+
+
+
+input, textarea{
+
+width:100%;
+padding:14px;
+margin:8px 0 15px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+
+}
+
+
+
+textarea{
+
+height:100px;
+resize:none;
+
+}
+
+
+
+button{
+
+width:100%;
+padding:15px;
+background:#0b5e2b;
+color:white;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#08451f;
+
+}
+
+
+
+.back{
+
+display:block;
+text-align:center;
+margin-top:20px;
+text-decoration:none;
+color:#0b5e2b;
+font-weight:bold;
+
+}
+
+
+
+#message{
+
+text-align:center;
+margin-top:15px;
+font-weight:bold;
+
+}
+
+
+
+</style>
+
+
 </head>
+
 
 <body>
 
-<h2>Attachment Registration</h2>
 
-<input type="text" id="company" placeholder="Institution name">
+<div class="container">
 
-<input type="text" id="supervisor" placeholder="Supervisor name">
 
-<input type="text" id="phone" placeholder="Supervisor phone">
+<div class="header">
 
-<input type="date" id="startDate">
+<img src="logo.png">
 
-<input type="date" id="endDate">
+<h2>
+NICHTECH TECHNOLOGIES<br>
+TRAINING COLLEGE
+</h2>
 
-<textarea id="address"
-placeholder="Institution address"></textarea>
+<p>
+Industrial Attachment Registration
+</p>
 
-<br><br>
+</div>
+
+
+
+
+<div class="form-area">
+
+
+
+<div class="student-info">
+
+<p><b>Student Name:</b> 
+<span id="studentName"></span>
+</p>
+
+
+<p><b>Student Number:</b> 
+<span id="studentNumber"></span>
+</p>
+
+
+</div>
+
+
+
+
+
+<label>Institution / Company Name</label>
+
+<input 
+type="text" 
+id="company"
+placeholder="Enter institution name">
+
+
+
+
+
+<label>Supervisor Name</label>
+
+<input 
+type="text"
+id="supervisor"
+placeholder="Enter supervisor name">
+
+
+
+
+
+<label>Supervisor Phone Number</label>
+
+<input 
+type="text"
+id="phone"
+placeholder="Enter phone number">
+
+
+
+
+
+<label>Attachment Start Date</label>
+
+<input 
+type="date"
+id="startDate">
+
+
+
+
+
+<label>Attachment End Date</label>
+
+<input 
+type="date"
+id="endDate">
+
+
+
+
+
+<label>Institution Address</label>
+
+<textarea
+id="address"
+placeholder="Enter institution address">
+</textarea>
+
+
+
+
 
 <button onclick="submitAttachment()">
-Submit
+
+Submit Attachment Registration
+
 </button>
+
 
 <p id="message"></p>
 
+
+
+<a href="dashboard.html" class="back">
+← Back to Dashboard
+</a>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
 <script>
 
-function submitAttachment() {
 
-    const student =
-        JSON.parse(localStorage.getItem("studentData"));
+// CHECK LOGIN
 
-    const data = {
-        studentNo: student.studentNo,
-        company: document.getElementById("company").value,
-        supervisor: document.getElementById("supervisor").value,
-        phone: document.getElementById("phone").value,
-        startDate: document.getElementById("startDate").value,
-        endDate: document.getElementById("endDate").value,
-        address: document.getElementById("address").value
-    };
+const student = JSON.parse(localStorage.getItem("studentData"));
 
-    console.log(data);
+
+
+if(!student){
+
+window.location.href="portal.html";
+
 }
+
+else{
+
+
+document.getElementById("studentName").innerText =
+student.name || "Not Available";
+
+
+document.getElementById("studentNumber").innerText =
+student.studentId || "Not Available";
+
+
+}
+
+
+
+
+
+
+function submitAttachment(){
+
+
+
+const attachment = {
+
+
+studentName:
+student.name,
+
+
+studentNumber:
+student.studentId,
+
+
+company:
+document.getElementById("company").value,
+
+
+supervisor:
+document.getElementById("supervisor").value,
+
+
+phone:
+document.getElementById("phone").value,
+
+
+startDate:
+document.getElementById("startDate").value,
+
+
+endDate:
+document.getElementById("endDate").value,
+
+
+address:
+document.getElementById("address").value
+
+
+};
+
+
+
+
+
+// SAVE TEMPORARILY
+
+localStorage.setItem(
+"attachmentData",
+JSON.stringify(attachment)
+);
+
+
+
+
+document.getElementById("message").innerHTML =
+"Attachment details submitted successfully!";
+
+
+
+console.log(attachment);
+
+
+
+}
+
+
 
 </script>
 
+
 </body>
+
+
 </html>
