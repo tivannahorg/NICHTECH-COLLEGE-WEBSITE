@@ -373,11 +373,12 @@ address: document.getElementById("address").value
 
 
 fetch(
-"https://script.google.com/macros/s/AKfycbwM5dwST8GJ-1CyWcqP_59FICBw_QPOaNeD_sLSUuZ_fqc8nrQJ_wKhyLH6KWepbuLjpA/exec",
-{
-    method: "POST",
-    body: JSON.stringify(attachment)
-})
+    "https://script.google.com/macros/s/AKfycbzvOuZXwfxgpVi5QE8g13VPDkIAwU19J749ZydyIntYgVp0vpKc0dkyioc8jpA1mJQVEw/exec",
+    {
+        method: "POST",
+        body: JSON.stringify(data)
+    }
+)
 
 .then(response => response.text())
 
