@@ -372,13 +372,11 @@ address: document.getElementById("address").value
 
 
 
-fetch("https://script.google.com/macros/s/AKfycbwM5dwST8GJ-1CyWcqP_59FICBw_QPOaNeD_sLSUuZ_fqc8nrQJ_wKhyLH6KWepbuLjpA/exec",
+fetch(
+"https://script.google.com/macros/s/AKfycbwM5dwST8GJ-1CyWcqP_59FICBw_QPOaNeD_sLSUuZ_fqc8nrQJ_wKhyLH6KWepbuLjpA/exec",
 {
-
-method:"POST",
-
-body:JSON.stringify(attachment)
-
+    method: "POST",
+    body: JSON.stringify(attachment)
 })
 
 .then(response => response.text())
